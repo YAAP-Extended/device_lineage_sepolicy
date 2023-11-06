@@ -10,3 +10,10 @@ allow platform_app sysfs_thermal:file r_file_perms;
 
 # Allow SystemUI to set touch sensitivity prop
 allow platform_app debug_prop:property_service set;
+
+# Allow systemui to read audio properties for shutter sound adjustment
+get_prop(platform_app, audio_config_prop)
+
+# Allow launcher app to read memory info
+r_dir_file(platform_app, config_gz)
+r_dir_file(platform_app, sysfs_zram)
